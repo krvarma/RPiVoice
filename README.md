@@ -122,6 +122,8 @@ When the speech recognizer recognize words based on the grammar file provided, i
 
 ![Wiring](https://raw.githubusercontent.com/krvarma/RPiVoice/master/images/wiring.JPG)
 
+![Fritzing](https://raw.githubusercontent.com/krvarma/RPiVoice/master/images/rpivoice.png)
+
 **Demo Video**
 
 https://www.youtube.com/watch?v=MN18Uo_063g
