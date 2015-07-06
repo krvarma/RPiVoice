@@ -120,6 +120,7 @@ When the speech recognizer recognize words based on the grammar file provided, i
 
 **Screenshots**
 
+![Wiring](https://raw.githubusercontent.com/krvarma/RPiVoice/master/images/wiring.JPG)
 
 **Demo Video**
 
