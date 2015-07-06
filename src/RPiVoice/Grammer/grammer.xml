@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<grammar
+  version="1.0"
+  xml:lang="en-US"
+  root="automationCommands"
+  xmlns="http://www.w3.org/2001/06/grammar"
+  tag-format="semantics/1.0">
+
+  <rule id="root">
+    <item>
+      <ruleref uri="#automationCommands"/>
+      <tag>out.command=rules.latest();</tag>
+    </item>
+  </rule>
+
+  <rule id="automationCommands">
+    <item>
+      <item> turn </item>
+      <item>
+        <ruleref uri="#commandActions" />
+        <tag> out.cmd=rules.latest(); </tag>
+      </item>
+      <one-of>
+        <item>
+          <ruleref uri="#locationActions" />
+          <tag> out.target=rules.latest(); </tag>
+        </item>
+        <item>
+          <ruleref uri="#colorActions" />
+          <tag> out.target=rules.latest(); </tag>
+        </item>
+      </one-of>
+      <item>
+        <ruleref uri="#deviceActions" />
+        <tag> out.device=rules.latest(); </tag>
+      </item>
+    </item>
+  </rule>
+
+  <rule id="commandActions">
+    <one-of>
+      <item>
+        on <tag> out="ON"; </tag>
+      </item>
+      <item>
+        off <tag> out="OFF"; </tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="locationActions">
+    <one-of>
+      <item>
+        bedroom <tag> out="BEDROOM"; </tag>
+      </item>
+      <item>
+        porch <tag> out="PORCH"; </tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="colorActions">
+    <one-of>
+      <item>
+        red <tag> out="RED"; </tag>
+      </item>
+      <item>
+        green <tag> out="GREEN"; </tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="deviceActions">
+    <one-of>
+      <item>
+        light <tag> out="LIGHT"; </tag>
+      </item>
+      <item>
+        led <tag> out="LED"; </tag>
+      </item>
+    </one-of>
+  </rule>
+</grammar>
