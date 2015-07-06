@@ -19,8 +19,8 @@ namespace RPiVoice
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        // Grammer File
-        private const string SRGS_FILE = "Grammer\\grammer.xml";
+        // grammar File
+        private const string SRGS_FILE = "Grammar\\grammar.xml";
         // RED Led Pin
         private const int RED_LED_PIN = 5;
         // GREEN Led Pin
@@ -120,16 +120,16 @@ namespace RPiVoice
             recognizer.StateChanged += RecognizerStateChanged;
             recognizer.ContinuousRecognitionSession.ResultGenerated += RecognizerResultGenerated;
 
-            // Load Grammer file constraint
+            // Load Grammar file constraint
             string fileName = String.Format(SRGS_FILE);
             StorageFile grammarContentFile = await Package.Current.InstalledLocation.GetFileAsync(fileName);
 
             SpeechRecognitionGrammarFileConstraint grammarConstraint = new SpeechRecognitionGrammarFileConstraint(grammarContentFile);
 
-            // Add to grammer constraint
+            // Add to grammar constraint
             recognizer.Constraints.Add(grammarConstraint);
 
-            // Compile grammer
+            // Compile grammar
             SpeechRecognitionCompilationResult compilationResult = await recognizer.CompileConstraintsAsync();
 
             Debug.WriteLine("Status: " + compilationResult.Status.ToString());

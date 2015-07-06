@@ -108,7 +108,7 @@
     <None Include="RPiVoice_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Grammer\grammer.xml">
+    <Content Include="Grammar\grammar.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Properties\Default.rd.xml" />
