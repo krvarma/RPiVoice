@@ -7,20 +7,20 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="4d746b05-fa2a-4756-b496-e739bbbebc72"
-    Publisher="CN=krvarma"
+    Name="d4b78089-3990-4334-b68c-77d29c5db37b"
+    Publisher="CN=pdecarlo"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="4d746b05-fa2a-4756-b496-e739bbbebc72" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="d4b78089-3990-4334-b68c-77d29c5db37b" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>RPiVoice</DisplayName>
-    <PublisherDisplayName>krvarma</PublisherDisplayName>
+    <PublisherDisplayName>pdecarlo</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10069.0" MaxVersionTested="10.0.10069.0" />
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
   </Dependencies>
 
   <Resources>
@@ -33,10 +33,11 @@
       EntryPoint="RPiVoice.App">
       <uap:VisualElements
         DisplayName="RPiVoice"
-        Square150x150Logo="Assets\Logo.png"
-        Square44x44Logo="Assets\SmallLogo.png"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png"
         Description="RPiVoice"
-        BackgroundColor="#464646">
+        BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
     </Application>
