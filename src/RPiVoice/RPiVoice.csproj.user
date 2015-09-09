@@ -3,8 +3,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
     <UseEmulator>false</UseEmulator>
-    <RemoteDebugMachine>10.0.0.11</RemoteDebugMachine>
+    <RemoteDebugMachine>192.168.1.3</RemoteDebugMachine>
     <RemoteDebugEnabled>true</RemoteDebugEnabled>
     <UseAuthentication>false</UseAuthentication>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
+    <UseEmulator>true</UseEmulator>
   </PropertyGroup>
 </Project>

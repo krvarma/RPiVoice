@@ -78,6 +78,8 @@ namespace RPiVoice
             // Initialize GPIO controller
             gpio = GpioController.GetDefault();
 
+            var a = GpioPinDriveMode.InputPullDown;
+
             // // Initialize GPIO Pins
             redPin = gpio.OpenPin(RED_LED_PIN);
             greenPin = gpio.OpenPin(GREEN_LED_PIN);
@@ -148,11 +150,13 @@ namespace RPiVoice
         }
 
         // Recognizer generated results
-        private void RecognizerResultGenerated(SpeechContinuousRecognitionSession session, SpeechContinuousRecognitionResultGeneratedEventArgs args)
+        private async void RecognizerResultGenerated(SpeechContinuousRecognitionSession session, SpeechContinuousRecognitionResultGeneratedEventArgs args)
         {
             // Output debug strings
             Debug.WriteLine(args.Result.Status);
             Debug.WriteLine(args.Result.Text);
+
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, (() => VoiceTextBlock.Text = args.Result.Text));
 
             int count = args.Result.SemanticInterpretation.Properties.Count;
 
@@ -178,7 +182,7 @@ namespace RPiVoice
             Debug.WriteLine("Target: " + target + ", Command: " + cmd + ", Device: " + device);
 
             // First check which device the user refers to
-            if (device.Equals(DEVICE_LED))
+            if (device.Equals(DEVICE_LED) || device.Equals(DEVICE_LIGHT))
             {
                 // Check what color is specified
                 if (target.Equals(COLOR_RED))
@@ -200,27 +204,27 @@ namespace RPiVoice
                     Debug.WriteLine("Unknown Target");
                 }
             }
-            else if (device.Equals(DEVICE_LIGHT))
-            {
-                // Check target location
-                if (target.Equals(TARGET_BEDROOM))
-                {
-                    Debug.WriteLine("BEDROOM LIGHT " + (isOn ? STATE_ON : STATE_OFF));
+            //else if (device.Equals(DEVICE_LIGHT))
+            //{
+            //    // Check target location
+            //    if (target.Equals(TARGET_BEDROOM))
+            //    {
+            //        Debug.WriteLine("BEDROOM LIGHT " + (isOn ? STATE_ON : STATE_OFF));
                     
-                    // Turn on the bedroom light
-                    WriteGPIOPin(bedroomLightPin, isOn ? GpioPinValue.High : GpioPinValue.Low);
-                }
-                else if (target.Equals(TARGET_PORCH))
-                {
-                    Debug.WriteLine("PORCH LIGHT " + (isOn ? STATE_ON : STATE_OFF));
+            //        // Turn on the bedroom light
+            //        WriteGPIOPin(bedroomLightPin, isOn ? GpioPinValue.High : GpioPinValue.Low);
+            //    }
+            //    else if (target.Equals(TARGET_PORCH))
+            //    {
+            //        Debug.WriteLine("PORCH LIGHT " + (isOn ? STATE_ON : STATE_OFF));
 
-                    // Insert code to control Porch light
-                }
-                else
-                {
-                    Debug.WriteLine("Unknown Target");
-                }
-            }
+            //        // Insert code to control Porch light
+            //    }
+            //    else
+            //    {
+            //        Debug.WriteLine("Unknown Target");
+            //    }
+            //}
             else
             {
                 Debug.WriteLine("Unknown Device");
